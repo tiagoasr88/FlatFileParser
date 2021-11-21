@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlatFileParser", "src\FlatFileParser\FlatFileParser.csproj", "{4C5CC432-9CAA-4BAA-9DA3-87F6E996A73D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlatFileParserTests", "test\FlatFileParserTests\FlatFileParserTests.csproj", "{B73E80CE-108F-4979-BB20-BFEB833E2BBB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4C5CC432-9CAA-4BAA-9DA3-87F6E996A73D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C5CC432-9CAA-4BAA-9DA3-87F6E996A73D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C5CC432-9CAA-4BAA-9DA3-87F6E996A73D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B73E80CE-108F-4979-BB20-BFEB833E2BBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B73E80CE-108F-4979-BB20-BFEB833E2BBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B73E80CE-108F-4979-BB20-BFEB833E2BBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B73E80CE-108F-4979-BB20-BFEB833E2BBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

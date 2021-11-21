@@ -7,9 +7,9 @@ using System.Text;
 
 namespace FlatFileParser.Parsers
 {
-    public class FixedLengthParser
+    public class FixedLengthLineParser
     {
-        public T ParseLine<T>(string line) where T : class
+        public T Parse<T>(string line) where T : class
         {
             var obj = (T)Activator.CreateInstance(typeof(T));
             var objProperties = typeof(T).GetProperties();
@@ -17,14 +17,14 @@ namespace FlatFileParser.Parsers
             {
                 var attr = (FixedLengthFieldAttribute)property.GetCustomAttributes(typeof(FixedLengthFieldAttribute), false).First();
 
-                var ret = ReadPositionalFileField(line, attr.StartPosition, attr.Length);
+                var ret = ReadFixedLengthFileField(line, attr.StartPosition, attr.Length);
 
                 property.SetValue(obj, DynamicConvert(ret, property.PropertyType, attr.Format));
             }
             return obj;
         }
 
-        private string ReadPositionalFileField(string line, int startPosition, int length)
+        private string ReadFixedLengthFileField(string line, int startPosition, int length)
         {
             return line.Substring(startPosition, length);
         }
