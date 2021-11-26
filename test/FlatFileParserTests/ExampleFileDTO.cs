@@ -62,7 +62,7 @@ namespace FlatFileParserTests
         public string FileVersion { get; set; } = string.Empty;
 
         [FixedLengthField(5, 8, "yyyyMMdd")]
-        //[FixedLengthField(5, 10, "dd/MM/yyyy")]
+        //[FixedLengthField(5, 10, "dd/MM/yyyy")] 
         public DateTimeOffset Date { get; set; }
     }
 
