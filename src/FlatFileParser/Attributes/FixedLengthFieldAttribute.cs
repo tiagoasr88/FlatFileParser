@@ -9,20 +9,23 @@ namespace FlatFileParser.Attributes
     {
         public int StartPosition { get; set; }
         public int Length { get; set; }
-        public string Format { get; set; }
+        public string DateFormat { get; set; }
+        public string CultureInfoName { get; set; }
 
         public FixedLengthFieldAttribute(int startPosition, int length)
         {
             StartPosition = startPosition;
             Length = length;
-            Format = String.Empty;
+            DateFormat = String.Empty;
+            CultureInfoName = String.Empty;
         }
 
-        public FixedLengthFieldAttribute(int startPosition, int length, string format)
+        public FixedLengthFieldAttribute(int startPosition, int length, string dateFormat = "", string cultureInfoName = "")
         {
             StartPosition = startPosition;
             Length = length;
-            Format = format;
+            DateFormat = dateFormat;
+            CultureInfoName = cultureInfoName;
         }
     }
 }

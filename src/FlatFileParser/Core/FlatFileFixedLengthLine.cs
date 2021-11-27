@@ -22,7 +22,7 @@ namespace FlatFileParser.Core
 
                 var ret = ReadFixedLengthFileField(line, attr.StartPosition, attr.Length);
 
-                property.SetValue(this, DynamicParser.Parse(ret, property.PropertyType, attr.Format), null);
+                property.SetValue(this, DynamicParser.Parse(ret, property.PropertyType, attr.DateFormat, attr.CultureInfoName), null);
             }
         }
 

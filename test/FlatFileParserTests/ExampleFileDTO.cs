@@ -2,6 +2,7 @@
 using FlatFileParser.Core;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,13 @@ namespace FlatFileParserTests
         public ExampleHeaderDTO Header { get; set; } = new ExampleHeaderDTO();
         public List<ExampleLineDTO> Details { get; set; } = new List<ExampleLineDTO>();
         public ExampleTrailerDTO Trailer { get; set; } = new ExampleTrailerDTO();
+
+        public ExampleFileDTO()
+        {
+            this.Header = new ExampleHeaderDTO();
+            this.Details = new List<ExampleLineDTO>();
+            this.Trailer = new ExampleTrailerDTO();
+        }
 
         public void Parse(Stream stream)
         {
@@ -29,7 +37,6 @@ namespace FlatFileParserTests
                         switch (lineHeader)
                         {
                             case "H":
-                                this.Header = new ExampleHeaderDTO();
                                 this.Header.Parse(line);
                                 break;
                             case "D":
@@ -37,7 +44,6 @@ namespace FlatFileParserTests
                                 this.Details.Last().Parse(line);
                                 break;
                             case "T":
-                                this.Trailer = new ExampleTrailerDTO();
                                 this.Trailer.Parse(line);
                                 break;
                             default:
@@ -62,7 +68,6 @@ namespace FlatFileParserTests
         public string FileVersion { get; set; } = string.Empty;
 
         [FixedLengthField(5, 8, "yyyyMMdd")]
-        //[FixedLengthField(5, 10, "dd/MM/yyyy")] 
         public DateTimeOffset Date { get; set; }
     }
 
@@ -75,10 +80,14 @@ namespace FlatFileParserTests
         public int Id { get; set; }
         [FixedLengthField(3, 10)]
         public string CustomerName { get; set; } = string.Empty;
-        [FixedLengthField(13, 8, "yyyyMMdd")]
+        [FixedLengthField(13, 8, dateFormat: "yyyyMMdd")]
         public DateTime CreationDate { get; set; }
-        [FixedLengthField(21, 6, "pt-Br")]
+        [FixedLengthField(21, 6, cultureInfoName: "pt-Br")]
         public decimal Amount { get; set; }
+        [FixedLengthField(27, 6, cultureInfoName: "en-Us")]
+        public double Weight { get; set; }
+        [FixedLengthField(33, 8, dateFormat: "ddMMyyyy")]
+        public DateTimeOffset BillingDate { get; set; }
     }
 
     public class ExampleTrailerDTO : FlatFileFixedLengthLine
