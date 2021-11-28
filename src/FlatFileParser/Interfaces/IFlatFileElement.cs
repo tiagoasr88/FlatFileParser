@@ -6,6 +6,6 @@ namespace FlatFileParser.Interfaces
 {
     public interface IFlatFileElement
     {
-        void Parse(string line);
+        void Read(string line);
     }
 }

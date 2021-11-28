@@ -13,7 +13,7 @@ namespace FlatFileParser.Core
 {
     public abstract class FlatFileFixedLengthLine : IFlatFileElement
     {
-        public void Parse(string line)
+        public void Read(string line)
         {
             var objProperties = this.GetType().GetProperties();
             foreach (var property in objProperties)

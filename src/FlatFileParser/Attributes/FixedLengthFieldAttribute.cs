@@ -12,14 +12,6 @@ namespace FlatFileParser.Attributes
         public string DateFormat { get; set; }
         public string CultureInfoName { get; set; }
 
-        public FixedLengthFieldAttribute(int startPosition, int length)
-        {
-            StartPosition = startPosition;
-            Length = length;
-            DateFormat = String.Empty;
-            CultureInfoName = String.Empty;
-        }
-
         public FixedLengthFieldAttribute(int startPosition, int length, string dateFormat = "", string cultureInfoName = "")
         {
             StartPosition = startPosition;

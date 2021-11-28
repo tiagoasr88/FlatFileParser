@@ -2,13 +2,10 @@
 using FlatFileParser.Core;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace FlatFileParserTests
+namespace FlatFileParserTests.FixedLengthTests.DTOs
 {
     public class ExampleFileDTO
     {
@@ -18,12 +15,12 @@ namespace FlatFileParserTests
 
         public ExampleFileDTO()
         {
-            this.Header = new ExampleHeaderDTO();
-            this.Details = new List<ExampleLineDTO>();
-            this.Trailer = new ExampleTrailerDTO();
+            Header = new ExampleHeaderDTO();
+            Details = new List<ExampleLineDTO>();
+            Trailer = new ExampleTrailerDTO();
         }
 
-        public void Parse(Stream stream)
+        public void Read(Stream stream)
         {
             using (stream)
             using (var sReader = new StreamReader(stream))
@@ -32,19 +29,19 @@ namespace FlatFileParserTests
                     var line = sReader.ReadLine();
                     if (!string.IsNullOrWhiteSpace(line))
                     {
-                        var lineHeader = this.GetLineHeader(line);
+                        var lineHeader = GetLineHeader(line);
 
                         switch (lineHeader)
                         {
                             case "H":
-                                this.Header.Parse(line);
+                                Header.Read(line);
                                 break;
                             case "D":
-                                this.Details.Add(new ExampleLineDTO());
-                                this.Details.Last().Parse(line);
+                                Details.Add(new ExampleLineDTO());
+                                Details.Last().Read(line);
                                 break;
                             case "T":
-                                this.Trailer.Parse(line);
+                                Trailer.Read(line);
                                 break;
                             default:
                                 break;
@@ -62,7 +59,7 @@ namespace FlatFileParserTests
     public class ExampleHeaderDTO : FlatFileFixedLengthLine
     {
         [FixedLengthField(0, 1)]
-        public string Identifier { get; set; } = String.Empty;
+        public string Identifier { get; set; } = string.Empty;
 
         [FixedLengthField(1, 4)]
         public string FileVersion { get; set; } = string.Empty;
@@ -74,7 +71,7 @@ namespace FlatFileParserTests
     public class ExampleLineDTO : FlatFileFixedLengthLine
     {
         [FixedLengthField(0, 1)]
-        public string Identifier { get; set; } = String.Empty;
+        public string Identifier { get; set; } = string.Empty;
 
         [FixedLengthField(1, 2)]
         public int Id { get; set; }
@@ -93,7 +90,7 @@ namespace FlatFileParserTests
     public class ExampleTrailerDTO : FlatFileFixedLengthLine
     {
         [FixedLengthField(0, 1)]
-        public string Identifier { get; set; } = String.Empty;
+        public string Identifier { get; set; } = string.Empty;
         [FixedLengthField(1, 7)]
         public int DetailsCount { get; set; }
     }

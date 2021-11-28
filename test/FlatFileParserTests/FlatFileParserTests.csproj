@@ -24,4 +24,8 @@
     <ProjectReference Include="..\..\src\FlatFileParser\FlatFileParser.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DelimitedTests\DTOs\" />
+  </ItemGroup>
+
 </Project>
