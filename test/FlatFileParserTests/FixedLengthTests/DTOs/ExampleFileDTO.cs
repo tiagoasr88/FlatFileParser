@@ -9,9 +9,9 @@ namespace FlatFileParserTests.FixedLengthTests.DTOs
 {
     public class ExampleFileDTO
     {
-        public ExampleHeaderDTO Header { get; set; } = new ExampleHeaderDTO();
-        public List<ExampleLineDTO> Details { get; set; } = new List<ExampleLineDTO>();
-        public ExampleTrailerDTO Trailer { get; set; } = new ExampleTrailerDTO();
+        public ExampleHeaderDTO Header { get; set; }
+        public List<ExampleLineDTO> Details { get; set; }
+        public ExampleTrailerDTO Trailer { get; set; }
 
         public ExampleFileDTO()
         {
