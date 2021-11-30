@@ -28,26 +28,26 @@ namespace FlatFileParser.Converters
 
         private static object ParseDouble(string value, string cultureInfoName)
         {
-            if (!string.IsNullOrWhiteSpace(cultureInfoName))
-                return double.Parse(value, new CultureInfo(cultureInfoName));
-            else
+            if (string.IsNullOrWhiteSpace(cultureInfoName))
                 return double.Parse(value, CultureInfo.InvariantCulture);
+            else
+                return double.Parse(value, new CultureInfo(cultureInfoName));
         }
 
         private static object ParseFloat(string value, string cultureInfoName)
         {
-            if (!string.IsNullOrWhiteSpace(cultureInfoName))
-                return float.Parse(value, new CultureInfo(cultureInfoName));
-            else
+            if (string.IsNullOrWhiteSpace(cultureInfoName))
                 return float.Parse(value, CultureInfo.InvariantCulture);
+            else
+                return float.Parse(value, new CultureInfo(cultureInfoName));
         }
 
         private static object ParseDecimal(string value, string cultureInfoName)
         {
-            if (!string.IsNullOrWhiteSpace(cultureInfoName))
-                return decimal.Parse(value, new CultureInfo(cultureInfoName));
-            else
+            if (string.IsNullOrWhiteSpace(cultureInfoName))
                 return decimal.Parse(value, CultureInfo.InvariantCulture);
+            else
+                return decimal.Parse(value, new CultureInfo(cultureInfoName));
         }
 
         private static object ParseDatetimeOffset(string value, string dateFormat)
